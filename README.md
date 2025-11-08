@@ -1,108 +1,219 @@
 # EgoHackZero's Useful Tools for Claude Code
 
-A collection of useful commands and tools for Claude Code that enhance developer productivity.
+A comprehensive collection of specialized AI agents and developer tools for Claude Code that dramatically enhance productivity through intelligent automation and expert guidance.
 
-## Features
+## Overview
 
-### Conda Environment Runner (`/conda-run`)
+This extension provides 5 specialized AI agents and practical commands to supercharge your development workflow:
 
-Seamlessly manage and run Python code with conda environments directly from Claude Code.
-
-**Key capabilities:**
-- Automatically detect or create conda environments
-- Smart environment selection with interactive prompts
-- Support for multiple Python versions (3.10, 3.11, 3.12)
-- Integrated package installation
-- Persistent environment activation across commands
-
-**Usage:**
-
-```bash
-# Run with a specific environment
-/conda-run myenv
-
-# Let Claude help you select or create an environment
-/conda-run
-
-# Examples of what Claude can do after activation:
-# - Run Python scripts
-# - Install packages with pip or conda
-# - Execute Python code snippets
-# - Manage environment dependencies
-```
+- **AI Agents**: Expert systems for research, learning, refactoring, architecture, and documentation
+- **Commands**: Practical tools like conda environment management
 
 ## Installation
 
-### Method 1: Manual Installation
+### Quick Install (Recommended)
 
-1. Clone or download this repository
-2. Copy the `.claude` directory to your project root:
-   ```bash
-   cp -r egohackzero_usefull_tools/.claude /path/to/your/project/
+1. **Add the marketplace:**
+   ```
+   /plugin marketplace add egohackzero/usefull-tools
    ```
 
-### Method 2: Symlink (Recommended for development)
+2. **Install the plugin:**
+   ```
+   /plugin install egohackzero-usefull-tools
+   ```
 
-Create a symlink to use the extension across multiple projects:
+3. **Start using the agents and commands immediately!**
+
+### Alternative: Local Development Installation
+
+If you want to use a local copy or contribute to development:
 
 ```bash
-# Linux/Mac
-ln -s /path/to/egohackzero_usefull_tools/.claude /path/to/your/project/.claude
+# Clone the repository
+git clone https://github.com/egohackzero/usefull-tools.git
 
-# Windows (requires admin privileges)
-mklink /D "C:\path\to\your\project\.claude" "C:\path\to\egohackzero_usefull_tools\.claude"
+# Add as local marketplace
+/plugin marketplace add /path/to/usefull-tools
+
+# Install the plugin
+/plugin install egohackzero-usefull-tools
 ```
 
-### Method 3: Git Submodule
+### Managing the Plugin
 
-Add as a git submodule to your project:
+- **Enable:** `/plugin enable egohackzero-usefull-tools`
+- **Disable:** `/plugin disable egohackzero-usefull-tools`
+- **Uninstall:** `/plugin uninstall egohackzero-usefull-tools`
+- **View all plugins:** `/plugin`
 
+### Requirements
+
+- Claude Code CLI version 2.0.0 or higher
+- For `/conda-run` command: Conda/Miniconda installed with initialization script at `~/miniconda3/etc/profile.d/conda.sh`
+
+## AI Agents
+
+### 🔍 Deep Research Agent
+**Category:** Analysis
+**Trigger:** Complex investigation and research needs
+
+Comprehensive research specialist with adaptive strategies and intelligent exploration.
+
+**Capabilities:**
+- Multi-hop reasoning with up to 5 levels of depth
+- Adaptive planning strategies (simple, ambiguous, or complex queries)
+- Self-reflective progress assessment and quality monitoring
+- Evidence-based analysis with proper citations
+- Parallel search optimization and tool orchestration
+
+**Best For:**
+- Current events and technical research
+- Complex information synthesis
+- Academic research contexts
+- Evidence-based analysis and investigation
+
+### 📚 Learning Guide
+**Category:** Communication
+**Trigger:** Code explanation and programming education
+
+Expert programming educator focused on understanding through progressive learning and practical examples.
+
+**Capabilities:**
+- Concept breakdown with multiple explanation approaches
+- Progressive skill building with prerequisite mapping
+- Working code demonstrations with variations
+- Educational exercises that build confidence
+- Knowledge assessment and understanding verification
+
+**Best For:**
+- Teaching programming concepts
+- Creating tutorials and learning paths
+- Algorithm breakdowns and explanations
+- Educational content design
+
+### ♻️ Refactoring Expert
+**Category:** Quality
+**Trigger:** Code quality improvement and technical debt reduction
+
+Systematic code quality improvement through proven refactoring patterns and clean code principles.
+
+**Capabilities:**
+- Complexity metric analysis (cyclomatic, maintainability index)
+- SOLID principles and design pattern application
+- Duplication elimination and anti-pattern removal
+- Safe, incremental transformations with testing
+- Before/after quality metrics and improvement tracking
+
+**Best For:**
+- Reducing code complexity and technical debt
+- Applying SOLID principles and design patterns
+- Improving maintainability and readability
+- Safe code transformation
+
+### 🏗️ System Architect
+**Category:** Engineering
+**Trigger:** System architecture design and scalability planning
+
+Holistic system design with focus on scalability, maintainability, and long-term technical strategy.
+
+**Capabilities:**
+- Component boundary definition and dependency mapping
+- Scalability architecture for 10x growth scenarios
+- Architectural pattern evaluation (microservices, CQRS, event sourcing)
+- Technology selection with long-term impact analysis
+- Migration strategies and technical debt planning
+
+**Best For:**
+- Designing scalable system architectures
+- Evaluating architectural patterns
+- Technology selection and migration planning
+- Creating comprehensive design documentation
+
+### 📝 Technical Writer
+**Category:** Communication
+**Trigger:** Documentation creation and improvement
+
+Clear, comprehensive technical documentation tailored to specific audiences with focus on usability.
+
+**Capabilities:**
+- Audience analysis and skill level assessment
+- Information architecture and logical content structure
+- Clear instructions with working examples
+- WCAG accessibility compliance
+- API documentation, user guides, and troubleshooting
+
+**Best For:**
+- API documentation and technical specifications
+- User guides and tutorials
+- Troubleshooting and installation guides
+- Accessibility-compliant documentation
+
+## Commands
+
+### 🐍 `/conda-run [env_name]`
+**Category:** Run
+
+Seamlessly manage and run Python code with conda environments directly from Claude Code.
+
+**Features:**
+- Automatic environment detection and creation
+- Smart environment selection with interactive prompts
+- Support for multiple Python versions (3.10, 3.11, 3.12)
+- Integrated package installation (pip/conda)
+- Persistent environment activation
+
+**Usage:**
 ```bash
-git submodule add https://github.com/egohackzero/usefull-tools.git .claude-extensions/egohackzero_usefull_tools
-ln -s .claude-extensions/egohackzero_usefull_tools/.claude .claude
-```
-
-## Requirements
-
-- Claude Code CLI
-- Conda/Miniconda installed on your system
-- Conda initialization script at `~/miniconda3/etc/profile.d/conda.sh` (or update the path in the command)
-
-## Commands Reference
-
-### `/conda-run [env_name]`
-
-**Description:** Run Python code with conda environment management
-
-**Arguments:**
-- `env_name` (optional): Name of the conda environment to use
-
-**Behavior:**
-- If environment exists: Activates it
-- If environment doesn't exist: Prompts to create it with selected Python version
-- If no environment specified: Shows list of available environments or option to create new
-
-**Examples:**
-
-```bash
-# Use existing environment
+# Run with specific environment
 /conda-run ml-project
 
 # Interactive selection
 /conda-run
-
-# After activation, run Python code
-# Claude will execute: source conda && conda activate env_name && python script.py
 ```
+
+## Agent Categories
+
+- **Analysis**: `deep-research-agent`
+- **Communication**: `learning-guide`, `technical-writer`
+- **Quality**: `refactoring-expert`
+- **Engineering**: `system-architect`
+
+## Use Cases
+
+### Research & Learning
+- Investigate complex technical topics with Deep Research Agent
+- Learn new programming concepts with Learning Guide
+- Create comprehensive documentation with Technical Writer
+
+### Code Quality
+- Refactor legacy code with Refactoring Expert
+- Design new systems with System Architect
+- Reduce technical debt systematically
+
+### Development Workflow
+- Manage Python environments with `/conda-run`
+- Generate API documentation with Technical Writer
+- Plan architectural changes with System Architect
 
 ## Contributing
 
-Feel free to contribute additional useful commands and tools!
+Contributions are welcome! To add new agents or commands:
 
 1. Fork the repository
-2. Create a new command in `.claude/commands/`
-3. Update `package.json` with command metadata
+2. Create your agent in `.claude/agents/` or command in `.claude/commands/`
+3. Update `.claude-plugin/plugin.json` with the new agent/command metadata
 4. Submit a pull request
+
+### Agent Structure
+```markdown
+---
+name: agent-name
+description: Brief description
+category: analysis|communication|quality|engineering
+---
+# Agent content
+```
 
 ## License
 
@@ -115,7 +226,7 @@ MIT License - See LICENSE file for details
 ## Changelog
 
 ### v1.0.0 (Initial Release)
-- Added `/conda-run` command for conda environment management
-- Support for automatic environment creation
-- Interactive environment selection
-- Multi-version Python support
+- 5 specialized AI agents: Deep Research, Learning Guide, Refactoring Expert, System Architect, Technical Writer
+- `/conda-run` command for conda environment management
+- Comprehensive documentation and examples
+- Full agent categorization system
